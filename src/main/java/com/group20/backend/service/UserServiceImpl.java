@@ -1,8 +1,10 @@
-package com.group20.service;
+package com.group20.backend.service;
 
-import com.group20.dao.DaoManage;
-import com.group20.dao.UserDao;
-import com.group20.model.User;
+import com.group20.Response;
+import com.group20.backend.dao.DaoManage;
+import com.group20.backend.dao.UserDao;
+import com.group20.backend.model.User;
+import com.group20.utils.ResultUtil;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -16,18 +18,18 @@ public class UserServiceImpl implements UserService {
     private final UserDao userDao = DaoManage.getUserDaoInstance();
 
     @Override
-    public Boolean login(User userLogin) {
+    public Response<Boolean> login(User userLogin) {
         List<User> allUser = userDao.getAllUser();
         for (User user : allUser) {
             if (user.getUserName().equals(userLogin.getUserName()) && user.getPassword().equals(userLogin.getPassword())) {
-                return true;
+                return ResultUtil.success();
             }
         }
-        return false;
+        return ResultUtil.fail("登录失败，用户名或密码错误");
     }
 
     @Override
-    public Boolean register(User user) {
+    public Response<Boolean> register(User user) {
         List<User> allUser = userDao.getAllUser();
         user.setCreateTime(LocalDateTime.now());
         user.setUpdateTime(LocalDateTime.now());
@@ -35,17 +37,17 @@ public class UserServiceImpl implements UserService {
             user.setUserId(0);
             allUser.add(user);
             userDao.saveAll(allUser);
-            return true;
+            return ResultUtil.success();
         }
         int maxId = Integer.MIN_VALUE;
         for (User userExist : allUser) {
             if (userExist.getUserName().equals(user.getUserName())) {
-                return false;
+                return ResultUtil.fail("用户已存在");
             }
         }
         user.setUserId(maxId + 1);
         allUser.add(user);
         userDao.saveAll(allUser);
-        return true;
+        return ResultUtil.success();
     }
 }

@@ -1,6 +1,4 @@
-package com.group20.dao;
-
-import com.group20.model.User;
+package com.group20.backend.dao;
 
 /**
  * dao manage

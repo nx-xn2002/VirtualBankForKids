@@ -1,4 +1,4 @@
-package com.group20.dao;
+package com.group20.backend.dao;
 
 import lombok.AllArgsConstructor;
 

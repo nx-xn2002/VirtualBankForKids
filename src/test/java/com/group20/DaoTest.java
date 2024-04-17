@@ -1,10 +1,9 @@
 package com.group20;
 
-import com.group20.dao.BaseDao;
-import com.group20.model.User;
+import com.group20.backend.dao.BaseDao;
+import com.group20.backend.model.User;
 import org.junit.jupiter.api.Test;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

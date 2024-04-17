@@ -1,4 +1,4 @@
-package com.group20.model;
+package com.group20.backend.model;
 
 import lombok.Data;
 
@@ -15,7 +15,7 @@ public class User {
     /**
      * data type
      */
-    public static String DATA_TYPE = "com.group20.model.User";
+    public final static String DATA_TYPE = "com.group20.backend.model.User";
     /**
      * user id
      */

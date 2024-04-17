@@ -1,6 +1,6 @@
-package com.group20.dao;
+package com.group20.backend.dao;
 
-import com.group20.model.User;
+import com.group20.backend.model.User;
 
 import java.util.ArrayList;
 import java.util.List;

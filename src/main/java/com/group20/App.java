@@ -1,10 +1,14 @@
 package com.group20;
 
+import com.group20.frontend.pages.LoginPage;
+
 /**
- * Hello world!
+ * Application startup
+ *
+ * @author Ni Xiang
  */
 public class App {
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        LoginPage loginPage = new LoginPage();
     }
 }
