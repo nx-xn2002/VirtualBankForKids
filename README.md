@@ -9,6 +9,7 @@
 user表:
 - userId 自增Integer
 - userName
+- password
 - age
 - role 0 - 孩子, 1 - 家长
 - phone
