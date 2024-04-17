@@ -16,7 +16,6 @@ user表:
 - email
 - createTime
 - updateTime
-- isDeleted 逻辑删除 0 - 正常, 1 - 删除
 
 
 
@@ -26,7 +25,6 @@ account表:
 - balance 账户余额
 - createTime
 - updateTime
-- isDeleted 逻辑删除 0 - 正常, 1 - 删除
 
 
 
@@ -35,5 +33,4 @@ user_account表:
 - accountId
 - createTime
 - updateTime
-- isDeleted 逻辑删除 0 - 正常, 1 - 删除
 
