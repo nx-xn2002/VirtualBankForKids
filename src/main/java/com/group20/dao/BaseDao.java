@@ -13,7 +13,7 @@ import java.util.List;
  * @author Ni Xiang
  */
 @AllArgsConstructor
-public class BaseDao {
+public class BaseDao<T> {
     private String dataType;
     private String path;
 
@@ -38,9 +38,9 @@ public class BaseDao {
         return res;
     }
 
-    public void saveAll(List<Object> list) {
+    public void saveAll(List<T> list) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(path))) {
-            for (Object o : list) {
+            for (T o : list) {
                 writer.write(o.toString());
                 writer.newLine();
             }

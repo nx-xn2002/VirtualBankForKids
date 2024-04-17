@@ -10,7 +10,7 @@ import java.util.List;
  *
  * @author Ni Xiang
  */
-public class UserDao extends BaseDao {
+public class UserDao extends BaseDao<User> {
     public UserDao(String path) {
         super(User.DATA_TYPE, path);
     }

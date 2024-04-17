@@ -16,4 +16,13 @@ public interface UserService {
      * @author Ni Xiang
      */
     public Boolean login(User userLogin);
+
+    /**
+     * register
+     *
+     * @param user user
+     * @return {@link Boolean }
+     * @author Ni Xiang
+     */
+    public Boolean register(User user);
 }

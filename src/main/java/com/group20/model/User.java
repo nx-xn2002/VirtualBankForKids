@@ -53,11 +53,6 @@ public class User {
      * update time
      */
     private LocalDateTime updateTime;
-    /**
-     * is deleted
-     * 逻辑删除 0 - 正常, 1 - 删除
-     */
-    private Short isDeleted;
 
     public User() {
     }
@@ -72,7 +67,6 @@ public class User {
         this.setEmail(s.get(6));
         this.setCreateTime(LocalDateTime.parse(s.get(7)));
         this.setUpdateTime(LocalDateTime.parse(s.get(8)));
-        this.setIsDeleted(Short.valueOf(s.get(9)));
     }
 
     @Override
@@ -84,8 +78,6 @@ public class User {
                 phone + " " +
                 email + " " +
                 createTime + " " +
-                updateTime + " " +
-                isDeleted;
-
+                updateTime + " ";
     }
 }
