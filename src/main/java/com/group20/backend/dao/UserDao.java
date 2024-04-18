@@ -19,7 +19,7 @@ public class UserDao extends BaseDao<User> {
         List<Object> userObjects = super.getAll();
         List<User> users = new ArrayList<>();
         for (Object userObject : userObjects) {
-            users.add((User) userObjects);
+            users.add((User) userObject);
         }
         return users;
     }

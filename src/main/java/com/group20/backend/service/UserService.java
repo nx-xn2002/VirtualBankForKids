@@ -16,7 +16,7 @@ public interface UserService {
      * @return {@link Response }<{@link Boolean }>
      * @author Ni Xiang
      */
-    public Response<Boolean> login(User userLogin);
+    public Response<User> login(User userLogin);
 
     /**
      * register

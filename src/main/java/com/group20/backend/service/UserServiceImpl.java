@@ -18,11 +18,13 @@ public class UserServiceImpl implements UserService {
     private final UserDao userDao = DaoManage.getUserDaoInstance();
 
     @Override
-    public Response<Boolean> login(User userLogin) {
+    public Response<User> login(User userLogin) {
         List<User> allUser = userDao.getAllUser();
+        System.out.println("尝试登录："+userLogin.getUsername()+" "+userLogin.getPassword());
         for (User user : allUser) {
-            if (user.getUserName().equals(userLogin.getUserName()) && user.getPassword().equals(userLogin.getPassword())) {
-                return ResultUtil.success();
+            System.out.println(user.getUsername()+" "+user.getPassword());
+            if (user.getUsername().equals(userLogin.getUsername()) && user.getPassword().equals(userLogin.getPassword())) {
+                return ResultUtil.success(user);
             }
         }
         return ResultUtil.fail("登录失败，用户名或密码错误");
@@ -41,7 +43,7 @@ public class UserServiceImpl implements UserService {
         }
         int maxId = Integer.MIN_VALUE;
         for (User userExist : allUser) {
-            if (userExist.getUserName().equals(user.getUserName())) {
+            if (userExist.getUsername().equals(user.getUsername())) {
                 return ResultUtil.fail("用户已存在");
             }
         }

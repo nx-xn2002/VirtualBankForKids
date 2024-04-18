@@ -15,5 +15,5 @@ import lombok.NoArgsConstructor;
 public class Response<T> {
     private T data;
     private String message;
-    private Integer code;
+    private Boolean code;
 }

@@ -9,14 +9,18 @@ import com.group20.Response;
  */
 public class ResultUtil {
     public static <T> Response<T> success(T data) {
-        return new Response<>(data, "", 200);
+        return new Response<>(data, "", true);
     }
 
     public static <T> Response<T> success() {
-        return new Response<>(null, "", 200);
+        return new Response<>(null, "", true);
+    }
+
+    public static <T> Response<T> success(String message) {
+        return new Response<>(null, message, true);
     }
 
     public static <T> Response<T> fail(String message) {
-        return new Response<>(null, message, 0);
+        return new Response<>(null, message, false);
     }
 }

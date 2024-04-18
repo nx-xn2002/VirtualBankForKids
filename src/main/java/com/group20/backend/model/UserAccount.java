@@ -1,5 +1,7 @@
 package com.group20.backend.model;
+
 import lombok.Data;
+
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -8,11 +10,12 @@ import java.util.List;
  *
  * @author Wang BoWen
  */
-public class User_Account {
+@Data
+public class UserAccount {
     /**
      * data type
      */
-    public static String DATA_TYPE = "com.group20.model.User_Account";
+    public final static String DATA_TYPE = "com.group20.backend.model.UserAccount";
     /**
      * accountId
      */
@@ -29,13 +32,22 @@ public class User_Account {
      * update time
      */
     private LocalDateTime updateTime;
-    public User_Account() {
 
+    public UserAccount() {
     }
-    public User_Account(List<String> s) {
+
+    public UserAccount(List<String> s) {
         this.setAccountId(Integer.valueOf(s.get(0)));
         this.setUserId(Integer.valueOf(s.get(1)));
         this.setCreateTime(LocalDateTime.parse(s.get(2)));
         this.setUpdateTime(LocalDateTime.parse(s.get(3)));
+    }
+
+    @Override
+    public String toString() {
+        return accountId +
+                " " + userId +
+                " " + createTime +
+                " " + updateTime;
     }
 }

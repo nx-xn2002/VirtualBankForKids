@@ -10,11 +10,11 @@ import com.group20.utils.ResultUtil;
  * @author Ni Xiang
  */
 public class BaseController implements Controller {
-    private final BaseController baseController = new BaseController();
+    private final static BaseController BASE_CONTROLLER = new BaseController();
     private UserController userController;
 
-    public BaseController getInstance() {
-        return baseController;
+    public static BaseController getInstance() {
+        return BASE_CONTROLLER;
     }
 
     @Override

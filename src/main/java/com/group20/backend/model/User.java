@@ -23,7 +23,7 @@ public class User {
     /**
      * user name
      */
-    private String userName;
+    private String username;
     /**
      * password
      */
@@ -57,9 +57,14 @@ public class User {
     public User() {
     }
 
+    public User(String username, String password) {
+        setUsername(username);
+        setPassword(password);
+    }
+
     public User(List<String> s) {
         this.setUserId(Integer.valueOf(s.get(0)));
-        this.setUserName(s.get(1));
+        this.setUsername(s.get(1));
         this.setPassword(s.get(2));
         this.setAge(Integer.valueOf(s.get(3)));
         this.setRole(Short.valueOf(s.get(4)));
@@ -72,7 +77,7 @@ public class User {
     @Override
     public String toString() {
         return userId + " " +
-                userName + " " +
+                username + " " +
                 age + " " +
                 role + " " +
                 phone + " " +

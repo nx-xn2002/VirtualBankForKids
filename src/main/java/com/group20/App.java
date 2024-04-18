@@ -1,5 +1,6 @@
 package com.group20;
 
+import com.group20.frontend.PageManagement;
 import com.group20.frontend.pages.LoginPage;
 
 /**
@@ -9,6 +10,6 @@ import com.group20.frontend.pages.LoginPage;
  */
 public class App {
     public static void main(String[] args) {
-        LoginPage loginPage = new LoginPage();
+        PageManagement page = PageManagement.getInstance();
     }
 }

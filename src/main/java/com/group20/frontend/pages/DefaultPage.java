@@ -26,6 +26,7 @@ public class DefaultPage extends JFrame {
                 int option = JOptionPane.showConfirmDialog(DefaultPage.this, "Are you sure you want to exit the app?", "", JOptionPane.YES_NO_OPTION);
                 if (option == JOptionPane.YES_OPTION) {
                     dispose();
+                    System.exit(0);
                 }
             }
         });
