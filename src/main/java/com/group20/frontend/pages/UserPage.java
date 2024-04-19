@@ -1,9 +1,9 @@
 package com.group20.frontend.pages;
 
-import com.group20.backend.model.User;
 import com.group20.frontend.PageManagement;
 
 import javax.swing.*;
+import java.awt.*;
 
 /**
  * user page
@@ -12,6 +12,9 @@ import javax.swing.*;
  */
 public class UserPage extends JPanel {
     public UserPage(){
-        add(new JLabel(PageManagement.getInstance().getUserLogin().toString()));
+        setLayout(new GridLayout(3,1));
+        add(new JLabel("username:"+PageManagement.getInstance().getUserLogin().getUsername()));
+        add(new JLabel("email:"+PageManagement.getInstance().getUserLogin().getEmail()));
+        add(new JLabel("phone:"+PageManagement.getInstance().getUserLogin().getPhone()));
     }
 }

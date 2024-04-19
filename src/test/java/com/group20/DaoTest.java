@@ -16,7 +16,7 @@ public class DaoTest {
 
     @Test
     public void BaseDaoTest() {
-        BaseDao baseDao = new BaseDao(User.DATA_TYPE, "src/main/resources/user_data.txt");
+        BaseDao baseDao = new BaseDao(User.DATA_TYPE, "src/main/resources/user_data.csv");
 //        List<Object> all = baseDao.getAll();
 //        for (Object o : all) {
 //            System.out.println(o);

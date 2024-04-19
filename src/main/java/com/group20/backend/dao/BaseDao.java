@@ -27,7 +27,7 @@ public class BaseDao<T> {
         List<String> allStrings = getAllString();
         List<Object> res = new ArrayList<>();
         for (String str : allStrings) {
-            List<String> list = Arrays.stream(str.split(" ")).toList();
+            List<String> list = Arrays.stream(str.split(",")).toList();
             try {
                 Object object = dataClass.getConstructor(List.class).newInstance(list);
                 res.add(object);

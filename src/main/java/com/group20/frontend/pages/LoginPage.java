@@ -99,6 +99,7 @@ public class LoginPage extends DefaultPage {
     }
 
     private void enableRegister(boolean enable) {
+        loginButton.setEnabled(!enable);
         ageField.setEnabled(enable);
         roleBox.setEnabled(enable);
         phoneField.setEnabled(enable);
