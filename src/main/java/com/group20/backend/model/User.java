@@ -1,5 +1,6 @@
 package com.group20.backend.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -11,6 +12,7 @@ import java.util.List;
  * @author Ni Xiang
  */
 @Data
+@AllArgsConstructor
 public class User {
     /**
      * data type
@@ -76,13 +78,14 @@ public class User {
 
     @Override
     public String toString() {
-        return userId + " " +
-                username + " " +
-                age + " " +
-                role + " " +
-                phone + " " +
-                email + " " +
-                createTime + " " +
-                updateTime + " ";
+        return userId + "," +
+                username + "," +
+                password + "," +
+                age + "," +
+                role + "," +
+                phone + "," +
+                email + "," +
+                createTime + "," +
+                updateTime;
     }
 }

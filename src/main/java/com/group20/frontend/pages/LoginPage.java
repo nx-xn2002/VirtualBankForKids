@@ -4,11 +4,13 @@ import com.group20.Response;
 import com.group20.backend.model.User;
 import com.group20.frontend.PageManagement;
 import com.group20.utils.RequestUtils;
+import com.group20.utils.ResultUtil;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDateTime;
 
 /**
  * login page
@@ -92,7 +94,30 @@ public class LoginPage extends DefaultPage {
             public void actionPerformed(ActionEvent e) {
                 String username = usernameField.getText();
                 String password = String.valueOf(passwordField.getPassword());
-                JOptionPane.showMessageDialog(LoginPage.this, "Register Success！");
+                String age = ageField.getText();
+                Short role = null;
+                String roleStr = (String) roleBox.getSelectedItem();
+                if (roleStr == null) {
+                    role = 0;
+                } else if (roleStr.equals("child")) {
+                    role = 0;
+                } else {
+                    role = 1;
+                }
+                String phone = phoneField.getText();
+                String email = emailField.getText();
+                if (isNotBlank(username, password, age, roleStr, phone, email)) {
+                    Response<Boolean> request = RequestUtils.request(REGISTER_URL, new User(0, username, password,
+                            Integer.valueOf(age), role, phone, email, LocalDateTime.now(),
+                            LocalDateTime.now()));
+                    if (request.getCode()) {
+                        JOptionPane.showMessageDialog(LoginPage.this, "Register Success！");
+                    } else {
+                        JOptionPane.showMessageDialog(LoginPage.this, request.getMessage());
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(LoginPage.this, "Register failed！All fields must not be empty.");
+                }
             }
         });
         this.setVisible(true);
@@ -105,5 +130,14 @@ public class LoginPage extends DefaultPage {
         phoneField.setEnabled(enable);
         emailField.setEnabled(enable);
         registerButton.setEnabled(enable);
+    }
+
+    private static boolean isNotBlank(String... args) {
+        for (String arg : args) {
+            if (arg == null || arg.isEmpty()) {
+                return false;
+            }
+        }
+        return true;
     }
 }

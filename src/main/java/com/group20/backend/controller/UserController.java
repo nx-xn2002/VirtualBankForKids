@@ -2,8 +2,6 @@ package com.group20.backend.controller;
 
 import com.group20.Request;
 import com.group20.Response;
-import com.group20.backend.dao.DaoManage;
-import com.group20.backend.dao.UserDao;
 import com.group20.backend.model.User;
 import com.group20.backend.service.UserService;
 import com.group20.backend.service.UserServiceImpl;

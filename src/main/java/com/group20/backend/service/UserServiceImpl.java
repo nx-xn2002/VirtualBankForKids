@@ -27,7 +27,7 @@ public class UserServiceImpl implements UserService {
                 return ResultUtil.success(user);
             }
         }
-        return ResultUtil.fail("登录失败，用户名或密码错误");
+        return ResultUtil.fail("Login failed, incorrect username or password");
     }
 
     @Override
@@ -44,7 +44,7 @@ public class UserServiceImpl implements UserService {
         int maxId = Integer.MIN_VALUE;
         for (User userExist : allUser) {
             if (userExist.getUsername().equals(user.getUsername())) {
-                return ResultUtil.fail("用户已存在");
+                return ResultUtil.fail("User already exists");
             }
         }
         user.setUserId(maxId + 1);
