@@ -34,3 +34,11 @@ user_account表:
 - createTime
 - updateTime
 
+
+relation表:
+- relationId
+- parentId
+- childId
+- createTime
+- updateTime
+
