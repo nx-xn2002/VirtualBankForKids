@@ -3,6 +3,7 @@ package com.group20.frontend.pages;
 import com.group20.frontend.PageManagement;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.time.format.DateTimeFormatter;
 
@@ -13,6 +14,14 @@ import java.time.format.DateTimeFormatter;
  */
 public class UserInfoPage extends JPanel {
     public UserInfoPage() {
+//        setLayout(new GridLayout(1, 1));
+//        String[][] datas = {};
+//        String[] title = {"key", "value"};
+//        DefaultTableModel tableModel = new DefaultTableModel(datas, title);
+//        JTable userInfo = new JTable(tableModel);
+//        tableModel.addRow(new String[]{"username", PageManagement.getInstance().getUserLogin().getUsername()});
+//        add(userInfo);
+
         setLayout(new GridLayout(6, 1));
         add(new JLabel("username:" + PageManagement.getInstance().getUserLogin().getUsername()));
         add(new JLabel("age:" + PageManagement.getInstance().getUserLogin().getAge()));

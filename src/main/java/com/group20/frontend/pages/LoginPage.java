@@ -4,7 +4,6 @@ import com.group20.Response;
 import com.group20.backend.model.User;
 import com.group20.frontend.PageManagement;
 import com.group20.utils.RequestUtils;
-import com.group20.utils.ResultUtil;
 
 import javax.swing.*;
 import java.awt.*;

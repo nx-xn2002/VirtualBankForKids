@@ -18,6 +18,8 @@ public class User {
      * data type
      */
     public final static String DATA_TYPE = "com.group20.backend.model.User";
+    public final static Short PARENT = 1;
+    public final static Short CHILD = 0;
     /**
      * user id
      */
