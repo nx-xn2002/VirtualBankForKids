@@ -110,4 +110,15 @@ public class UserServiceImpl implements UserService {
                 LocalDateTime.now()));
         return ResultUtil.success();
     }
+
+    @Override
+    public Response<User> selectUserByUserId(Integer userId) {
+        List<User> allUser = userDao.getAllUser();
+        for (User user : allUser) {
+            if (user.getUserId().equals(userId)) {
+                return ResultUtil.success(user);
+            }
+        }
+        return ResultUtil.fail("no such user");
+    }
 }

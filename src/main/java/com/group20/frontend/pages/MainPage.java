@@ -16,9 +16,9 @@ public class MainPage extends DefaultPage{
         super(WIDTH, HEIGHT);
         setLayout(new BorderLayout());
         buttonContainer.setLayout(new GridLayout(1,3));
-        buttonContainer.add(new Button("UserInfo"));
-        buttonContainer.add(new Button("Account"));
-        buttonContainer.add(new Button("Button3"));
+        buttonContainer.add(new JButton("UserInfo"));
+        buttonContainer.add(new JButton("Account"));
+        buttonContainer.add(new JButton("Button3"));
         JPanel page = new UserInfoPage();
         add(new JPanel());
         add(buttonContainer,BorderLayout.NORTH);

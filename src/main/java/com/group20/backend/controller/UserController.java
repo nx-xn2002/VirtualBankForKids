@@ -20,8 +20,12 @@ public class UserController implements Controller {
         String url = request.getUrl();
         if (url.contains("login")) {
             return userService.login((User) request.getBody());
-        }else if (url.contains("register")) {
+        } else if (url.contains("register")) {
             return userService.register((User) request.getBody());
+        } else if (url.contains("selectRelation")) {
+            return userService.selectRelationListByUser((User) request.getBody());
+        } else if (url.contains("selectUserById")) {
+            return userService.selectUserByUserId((Integer) request.getBody());
         }
         return ResultUtil.fail("无效url");
     }

@@ -49,4 +49,13 @@ public interface UserService {
      * @author Ni Xiang
      */
     public Response<Boolean> addRelation(User parent, User child);
+
+    /**
+     * select user by user id
+     *
+     * @param userId user id
+     * @return {@link Response }<{@link User }>
+     * @author Ni Xiang
+     */
+    public Response<User> selectUserByUserId(Integer userId);
 }
