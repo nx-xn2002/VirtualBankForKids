@@ -26,6 +26,14 @@ public class UserController implements Controller {
             return userService.selectRelationListByUser((User) request.getBody());
         } else if (url.contains("selectUserById")) {
             return userService.selectUserByUserId((Integer) request.getBody());
+        } else if (url.contains("updateUser")) {
+            return userService.updateUser((User) request.getBody());
+        } else if (url.contains("addRelation")) {
+            User[] body = (User[]) request.getBody();
+            return userService.addRelation(body[0], body[1]);
+        } else if (url.contains("removeRelation")) {
+            User[] body = (User[]) request.getBody();
+            return userService.removeRelation(body[0], body[1]);
         }
         return ResultUtil.fail("无效url");
     }

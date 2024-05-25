@@ -2,6 +2,7 @@ package com.group20.backend.dao;
 
 import com.group20.backend.model.User;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,5 +23,40 @@ public class UserDao extends BaseDao<User> {
             users.add((User) userObject);
         }
         return users;
+    }
+
+    public boolean update(User user) {
+        if (user.getUsername() == null) {
+            return false;
+        }
+        List<User> allUser = getAllUser();
+        User userToUpdate = null;
+        int index = -1;
+        for (int i = 0; i < allUser.size(); i++) {
+            if (allUser.get(i).getUsername().equals(user.getUsername())) {
+                userToUpdate = allUser.get(i);
+                index = i;
+                break;
+            }
+        }
+        if (index == -1) {
+            return false;
+        }
+        if (user.getPassword() != null) {
+            userToUpdate.setPassword(user.getPassword());
+        }
+        if (user.getAge() != null) {
+            userToUpdate.setAge(user.getAge());
+        }
+        if (user.getEmail() != null) {
+            userToUpdate.setEmail(user.getEmail());
+        }
+        if (user.getPhone() != null) {
+            userToUpdate.setPhone(user.getPhone());
+        }
+        userToUpdate.setUpdateTime(LocalDateTime.now());
+        allUser.set(index, userToUpdate);
+        saveAll(allUser);
+        return true;
     }
 }

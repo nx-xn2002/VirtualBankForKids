@@ -58,4 +58,23 @@ public interface UserService {
      * @author Ni Xiang
      */
     public Response<User> selectUserByUserId(Integer userId);
+
+    /**
+     * update user
+     *
+     * @param user user
+     * @return {@link Response }<{@link Boolean }>
+     * @author Ni Xiang
+     */
+    public Response<Boolean> updateUser(User user);
+
+    /**
+     * remove relation
+     *
+     * @param parent parent
+     * @param child  child
+     * @return {@link Response }<{@link Boolean }>
+     * @author Ni Xiang
+     */
+    public Response<Boolean> removeRelation(User parent,User child);
 }

@@ -25,6 +25,7 @@ import java.util.List;
 public class UserInfoPage extends JPanel {
     private final static String SELECT_RELATION = "/user/selectRelation";
     private final static String SELECT_USER_BY_ID = "/user/selectUserById";
+    private final static String UPDATE_USER = "/user/updateUser";
 
     public UserInfoPage() {
         setLayout(new BorderLayout());
@@ -80,10 +81,34 @@ public class UserInfoPage extends JPanel {
         editInfoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                String password = (String) userInfo.getValueAt(2, 1);
+                String age = (String) userInfo.getValueAt(3, 1);
+                String email = (String) userInfo.getValueAt(5, 1);
+                String phone = (String) userInfo.getValueAt(6, 1);
+                User userUpdate = PageManagement.getInstance().getUserLogin();
+                System.out.println(userUpdate);
+                if (!password.contains("*")) {
+                    userUpdate.setPassword(password);
+                }
+                userUpdate.setAge(Integer.parseInt(age));
+                userUpdate.setEmail(email);
+                userUpdate.setPhone(phone);
+                Response<Boolean> request = RequestUtils.request(UPDATE_USER, userUpdate);
+                if (request.getCode()) {
+                    JOptionPane.showMessageDialog(UserInfoPage.this, "Update Success!");
+                    PageManagement.changePage(new MainPage());
+                } else {
+                    JOptionPane.showMessageDialog(UserInfoPage.this, "Update Fail!");
+                }
             }
         });
         JButton editRelationButton = new JButton("Manage Relation");
+        editRelationButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new RelationEditPage();
+            }
+        });
         buttonPanel.add(editInfoButton);
         buttonPanel.add(editRelationButton);
         add(buttonPanel, BorderLayout.SOUTH);

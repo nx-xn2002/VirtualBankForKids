@@ -85,22 +85,21 @@ public class UserServiceImpl implements UserService {
         boolean parentValid = false, childValid = false;
         for (User userExist : allUser) {
             if (userExist.getUsername().equals(parent.getUsername()) && userExist.getRole().equals(User.PARENT)) {
-                parent.setUserId(userExist.getUserId());
+                parent = userExist;
                 parentValid = true;
             }
             if (userExist.getUsername().equals(child.getUsername()) && userExist.getRole().equals(User.CHILD)) {
-                child.setUserId(userExist.getUserId());
+                child = userExist;
                 childValid = true;
             }
         }
         if (!parentValid || !childValid) {
             return ResultUtil.fail("role is not valid or user is not exist!");
         }
-        List<Object> allRelationList = relationDao.getAll();
+        List<Relation> allRelationList = relationDao.getAllRelation();
         int maxId = Integer.MIN_VALUE;
         //relation should be distinct
-        for (Object o : allRelationList) {
-            Relation relation = (Relation) o;
+        for (Relation relation : allRelationList) {
             maxId = Math.max(relation.getRelationId(), maxId);
             if (relation.getParentId().equals(parent.getUserId()) && relation.getChildId().equals(child.getUserId())) {
                 return ResultUtil.fail("relation already exists");
@@ -108,6 +107,7 @@ public class UserServiceImpl implements UserService {
         }
         allRelationList.add(new Relation(maxId + 1, parent.getUserId(), child.getUserId(), LocalDateTime.now(),
                 LocalDateTime.now()));
+        relationDao.saveAll(allRelationList);
         return ResultUtil.success();
     }
 
@@ -120,5 +120,45 @@ public class UserServiceImpl implements UserService {
             }
         }
         return ResultUtil.fail("no such user");
+    }
+
+    @Override
+    public Response<Boolean> updateUser(User user) {
+        boolean updateRes = userDao.update(user);
+        if (!updateRes) {
+            return ResultUtil.fail("update fail");
+        }
+        return ResultUtil.success();
+    }
+
+    @Override
+    public Response<Boolean> removeRelation(User parent, User child) {
+        List<User> allUser = userDao.getAllUser();
+        boolean parentValid = false, childValid = false;
+        for (User userExist : allUser) {
+            if (userExist.getUsername().equals(parent.getUsername()) && userExist.getRole().equals(User.PARENT)) {
+                parent = userExist;
+                parentValid = true;
+            }
+            if (userExist.getUsername().equals(child.getUsername()) && userExist.getRole().equals(User.CHILD)) {
+                child = userExist;
+                childValid = true;
+            }
+        }
+        if (!parentValid || !childValid) {
+            return ResultUtil.fail("relation not exists!");
+        }
+        List<Relation> allRelationList = relationDao.getAllRelation();
+        //remove the exists relation
+        for (int i = 0; i < allRelationList.size(); i++) {
+            Relation relation = allRelationList.get(i);
+            if (relation.getParentId().equals(parent.getUserId()) && relation.getChildId().equals(child.getUserId())) {
+                allRelationList.remove(i);
+                break;
+            }
+        }
+        //save the change
+        relationDao.saveAll(allRelationList);
+        return ResultUtil.success();
     }
 }
