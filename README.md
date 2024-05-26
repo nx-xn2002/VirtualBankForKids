@@ -20,17 +20,10 @@ user表:
 
 
 account表:
-- accountId 
+- accountId
+- userId
 - type 0 - current accounts, 1 - saving accounts
 - balance 账户余额
-- createTime
-- updateTime
-
-
-
-user_account表:
-- userId
-- accountId
 - createTime
 - updateTime
 

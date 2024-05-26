@@ -21,6 +21,9 @@ public class UserServiceImpl implements UserService {
     private final UserDao userDao = DaoManage.getUserDaoInstance();
     private final RelationDao relationDao = DaoManage.getRelationDaoInstance();
 
+    /**
+     * /user/login
+     */
     @Override
     public Response<User> login(User userLogin) {
         List<User> allUser = userDao.getAllUser();

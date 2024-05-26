@@ -12,6 +12,8 @@ import java.util.List;
  */
 @Data
 public class Account {
+    public final static Short CURRENT = 0;
+    public final static Short SAVING = 1;
     /**
      * data type
      */
@@ -19,15 +21,19 @@ public class Account {
     /**
      * accountId
      */
-    public Integer accountId;
+    private Integer accountId;
+    /**
+     * user id
+     */
+    private Integer userId;
     /**
      * 0 - current accounts, 1 - saving accounts
      */
-    public Short type;
+    private Short type;
     /**
      * balance
      */
-    public Float balance;
+    private Float balance;
     /**
      * createTime
      */
@@ -42,18 +48,20 @@ public class Account {
 
     public Account(List<String> s) {
         this.setAccountId(Integer.valueOf(s.get(0)));
-        this.setType(Short.valueOf(s.get(1)));
-        this.setBalance(Float.valueOf(s.get(2)));
-        this.setCreateTime(LocalDateTime.parse(s.get(3)));
-        this.setUpdateTime(LocalDateTime.parse(s.get(4)));
+        this.setUserId(Integer.valueOf(s.get(1)));
+        this.setType(Short.valueOf(s.get(2)));
+        this.setBalance(Float.valueOf(s.get(3)));
+        this.setCreateTime(LocalDateTime.parse(s.get(4)));
+        this.setUpdateTime(LocalDateTime.parse(s.get(5)));
     }
 
     @Override
     public String toString() {
-        return accountId + " " +
-                type + " " +
-                balance + " " +
-                createTime + " " +
+        return accountId + "," +
+                userId + "," +
+                type + "," +
+                balance + "," +
+                createTime + "," +
                 updateTime;
     }
 }

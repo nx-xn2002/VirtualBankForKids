@@ -28,11 +28,11 @@ public class RelationEditPage extends JFrame {
         showInTheCenter(WIDTH, HEIGHT);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setResizable(false);
-        ComponentInit();
+        componentInit();
         setVisible(true);
     }
 
-    private void ComponentInit() {
+    private void componentInit() {
         setLayout(new GridLayout(2, 2));
         add(new JLabel("Username"));
         JTextField usernameField = new JTextField();
