@@ -35,3 +35,12 @@ relation表:
 - createTime
 - updateTime
 
+
+money表:
+- moneyId
+- type 0 - Withdraw取款,1 - Save存钱, 2 - Transfer转账
+- accountIdA
+- accountIdB
+- amount
+- createTime
+
