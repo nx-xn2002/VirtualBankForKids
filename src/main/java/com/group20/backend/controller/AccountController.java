@@ -30,6 +30,8 @@ public class AccountController implements Controller {
             return accountService.removeAccount((Account) request.getBody());
         } else if (url.contains("change")) {
             return moneyService.change((Money) request.getBody());
+        } else if (url.contains("getMoneyList")) {
+            return moneyService.getMoneyListByUserId((Integer) request.getBody());
         }
         return ResultUtil.fail("无效url");
     }

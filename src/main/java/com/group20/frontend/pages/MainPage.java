@@ -55,9 +55,9 @@ public class MainPage extends DefaultPage {
                 PageManagement.changePage(new MainPage(new MoneyPage()));
             }
         });
-        buttonContainer.add(moneyButton);
         buttonContainer.add(userInfoButton);
         buttonContainer.add(accountButton);
+        buttonContainer.add(moneyButton);
         add(new JPanel());
         add(buttonContainer, BorderLayout.NORTH);
     }

@@ -78,6 +78,7 @@ public class EditAccountPage extends JFrame {
                     } else {
                         JOptionPane.showMessageDialog(EditAccountPage.this, "Add Success");
                         PageManagement.changePage(new MainPage(new AccountPage()));
+                        EditAccountPage.this.dispose();
                     }
                 }
             }
@@ -94,24 +95,23 @@ public class EditAccountPage extends JFrame {
                     Response<List<Account>> response = RequestUtils.request(SELECT_ACCOUNT, accountArgs.getUserId());
                     for (Account account : response.getData()) {
                         if (account.getType().equals(accountArgs.getType())) {
-                            if (!account.getBalance().equals(0F)) {
-                                int option = JOptionPane.showConfirmDialog(EditAccountPage.this, "Your account still " +
-                                                "has balance:[" + account.getBalance() + "]. Are you sure you want to" +
-                                                " " +
-                                                "delete the " +
-                                                "account? " +
-                                                "(This action cannot be undone)", "",
-                                        JOptionPane.YES_NO_OPTION);
-                                if (option == JOptionPane.YES_OPTION) {
-                                    Response<Boolean> removeResponse = RequestUtils.request(REMOVE_ACCOUNT,
-                                            accountArgs);
-                                    if (removeResponse.getCode()) {
-                                        JOptionPane.showMessageDialog(EditAccountPage.this, "Remove Success");
-                                        PageManagement.changePage(new MainPage(new AccountPage()));
-                                    } else {
-                                        JOptionPane.showMessageDialog(EditAccountPage.this,
-                                                "Remove fail," + removeResponse.getMessage());
-                                    }
+                            int option = JOptionPane.showConfirmDialog(EditAccountPage.this, "Your account still " +
+                                            "has balance:[" + account.getBalance() + "]. Are you sure you want to" +
+                                            " " +
+                                            "delete the " +
+                                            "account? " +
+                                            "(This action cannot be undone)", "",
+                                    JOptionPane.YES_NO_OPTION);
+                            if (option == JOptionPane.YES_OPTION) {
+                                Response<Boolean> removeResponse = RequestUtils.request(REMOVE_ACCOUNT,
+                                        accountArgs);
+                                if (removeResponse.getCode()) {
+                                    JOptionPane.showMessageDialog(EditAccountPage.this, "Remove Success");
+                                    PageManagement.changePage(new MainPage(new AccountPage()));
+                                    EditAccountPage.this.dispose();
+                                } else {
+                                    JOptionPane.showMessageDialog(EditAccountPage.this,
+                                            "Remove fail," + removeResponse.getMessage());
                                 }
                                 return;
                             }

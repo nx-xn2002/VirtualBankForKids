@@ -29,7 +29,7 @@ public class MoneyDao extends BaseDao<Money> {
 
     public void add(Money money) {
         List<Money> allMoney = getAllMoney();
-        int max = Integer.MIN_VALUE;
+        int max = -1;
         for (Money moneyExist : allMoney) {
             max = Math.max(max, moneyExist.getMoneyId());
         }

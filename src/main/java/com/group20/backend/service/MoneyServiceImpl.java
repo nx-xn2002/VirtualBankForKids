@@ -9,6 +9,7 @@ import com.group20.backend.model.Money;
 import com.group20.utils.ResultUtil;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -33,6 +34,29 @@ public class MoneyServiceImpl implements MoneyService {
             return transfer(money);
         }
         return ResultUtil.fail("");
+    }
+
+    @Override
+    public Response<List<Money>> getMoneyListByUserId(Integer userId) {
+        //get user's accounts
+        List<Account> allAccount = accountDao.getAllAccount();
+        List<Integer> accountIdList = new ArrayList<>();
+        for (Account account : allAccount) {
+            if (account.getUserId().equals(userId)) {
+                accountIdList.add(account.getAccountId());
+            }
+        }
+        if (accountIdList.isEmpty()) {
+            return ResultUtil.fail("no account exist");
+        }
+        List<Money> allMoney = moneyDao.getAllMoney();
+        List<Money> userMoneyList = new ArrayList<>();
+        for (Money money : allMoney) {
+            if (accountIdList.contains(money.getAccountIdA())) {
+                userMoneyList.add(money);
+            }
+        }
+        return ResultUtil.success(userMoneyList);
     }
 
     private Response<Boolean> transfer(Money money) {
@@ -82,6 +106,7 @@ public class MoneyServiceImpl implements MoneyService {
         accountB.setBalance(accountB.getBalance() + money.getAmount());
         allAccount.set(indexA, accountA);
         allAccount.set(indexB, accountB);
+        accountDao.saveAll(allAccount);
         return ResultUtil.success();
     }
 
@@ -125,6 +150,7 @@ public class MoneyServiceImpl implements MoneyService {
                 account.setUpdateTime(LocalDateTime.now());
                 allAccount.set(i, account);
                 accountDao.saveAll(allAccount);
+                money.setAmount(-money.getAmount());
                 moneyDao.add(money);
                 return ResultUtil.success(true);
             }

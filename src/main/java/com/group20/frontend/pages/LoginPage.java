@@ -83,6 +83,7 @@ public class LoginPage extends DefaultPage {
                     JOptionPane.showMessageDialog(LoginPage.this, "Login Success!");
                     PageManagement.getInstance().setUserLogin(request.getData());
                     PageManagement.changePage(new MainPage());
+                    LoginPage.this.dispose();
                 } else {
                     JOptionPane.showMessageDialog(LoginPage.this, request.getMessage());
                 }

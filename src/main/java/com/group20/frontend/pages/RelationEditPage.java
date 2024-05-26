@@ -46,6 +46,7 @@ public class RelationEditPage extends JFrame {
                 if (response.getCode()) {
                     JOptionPane.showMessageDialog(RelationEditPage.this, "Add Success!");
                     PageManagement.changePage(new MainPage());
+                    RelationEditPage.this.dispose();
                 } else {
                     JOptionPane.showMessageDialog(RelationEditPage.this, "Add fail, " + response.getMessage());
                 }
@@ -60,6 +61,7 @@ public class RelationEditPage extends JFrame {
                 if (response.getCode()) {
                     JOptionPane.showMessageDialog(RelationEditPage.this, "Remove Success!");
                     PageManagement.changePage(new MainPage());
+                    RelationEditPage.this.dispose();
                 } else {
                     JOptionPane.showMessageDialog(RelationEditPage.this, "Remove fail, " + response.getMessage());
                 }
