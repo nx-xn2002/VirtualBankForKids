@@ -168,3 +168,17 @@ task Table:
 - childId
 - createTime
 - updateTime
+
+
+
+## Project Main Contributors
+
+[nx-xn2002 · GitHub](https://github.com/nx-xn2002): Xiang Ni, QMUL ID: 210976537  **Completed the most part of coding portion of the project development**
+
+Xinhang Li, QMUL ID: 210976537 **Completed the design and production of the project prototype, as well as the analysis of project requirements and report writing.**
+
+[harukunloca · GitHub](https://github.com/harukunloca): BoWen Wang  **Completed testing work for certain functional aspects of the project program.**
+
+
+
+<img src="images/image-20240527202229766.png" alt="image-20240527202229766" style="zoom:33%;" />
