@@ -1,25 +1,26 @@
 # Virtual Bank For Kids
 
-基本要求：
-- Java 单体项目 + 简单 GUI，要求可离线运行，禁止使用 web 应用
-- 可以使用 csv等文件进行数据存储，不能使用数据库
+## Base Requirement
 
-库表设计：
+- Java monolithic project + simple GUI, requires offline operation, **web applications are prohibited**.
+- use files like `.csv` for data storage, but don't use a database
 
-user表:
-- userId 自增Integer
+## Table Design
+
+user Table:
+
+- userId auto increment Integer
 - userName
 - password
 - age
-- role 0 - 孩子, 1 - 家长
+- role 0 - child, 1 - parent
 - phone
 - email
 - createTime
 - updateTime
 
+account Table:
 
-
-account表:
 - accountId
 - userId
 - type 0 - current accounts, 1 - saving accounts
@@ -27,16 +28,16 @@ account表:
 - createTime
 - updateTime
 
+relation Table:
 
-relation表:
 - relationId
 - parentId
 - childId
 - createTime
 - updateTime
 
+money Table:
 
-money表:
 - moneyId
 - type 0 - Withdraw取款,1 - Save存钱, 2 - Transfer转账
 - accountIdA
@@ -44,7 +45,11 @@ money表:
 - amount
 - createTime
 
-nixiang
+task Table:
 
-51354685
-69633053
+- taskId
+- isFinished
+- parentId
+- childId
+- createTime
+- updateTime
