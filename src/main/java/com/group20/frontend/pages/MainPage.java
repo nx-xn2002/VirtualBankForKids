@@ -33,7 +33,7 @@ public class MainPage extends DefaultPage {
 
     private void init() {
         setLayout(new BorderLayout());
-        buttonContainer.setLayout(new GridLayout(1, 3));
+        buttonContainer.setLayout(new GridLayout(1, 5));
         JButton userInfoButton = new JButton("User Info");
         userInfoButton.addActionListener(new ActionListener() {
             @Override
@@ -55,9 +55,25 @@ public class MainPage extends DefaultPage {
                 PageManagement.changePage(new MainPage(new MoneyPage()));
             }
         });
+        JButton taskButton = new JButton("Task");
+        taskButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                PageManagement.changePage(new MainPage(new TaskPage()));
+            }
+        });
+        JButton logoutButton = new JButton("Logout");
+        logoutButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                PageManagement.changePage(new LoginPage());
+            }
+        });
         buttonContainer.add(userInfoButton);
         buttonContainer.add(accountButton);
         buttonContainer.add(moneyButton);
+        buttonContainer.add(taskButton);
+        buttonContainer.add(logoutButton);
         add(new JPanel());
         add(buttonContainer, BorderLayout.NORTH);
     }

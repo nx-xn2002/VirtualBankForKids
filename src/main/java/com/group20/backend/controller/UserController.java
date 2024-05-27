@@ -2,7 +2,10 @@ package com.group20.backend.controller;
 
 import com.group20.Request;
 import com.group20.Response;
+import com.group20.backend.model.Task;
 import com.group20.backend.model.User;
+import com.group20.backend.service.TaskService;
+import com.group20.backend.service.TaskServiceImpl;
 import com.group20.backend.service.UserService;
 import com.group20.backend.service.UserServiceImpl;
 import com.group20.utils.ResultUtil;
@@ -14,6 +17,7 @@ import com.group20.utils.ResultUtil;
  */
 public class UserController implements Controller {
     private final UserService userService = new UserServiceImpl();
+    private final TaskService taskService = new TaskServiceImpl();
 
     @Override
     public Response requestHandler(Request request) {
@@ -34,6 +38,12 @@ public class UserController implements Controller {
         } else if (url.contains("removeRelation")) {
             User[] body = (User[]) request.getBody();
             return userService.removeRelation(body[0], body[1]);
+        } else if (url.contains("selectTask")) {
+            return taskService.selectTaskByUser((User) request.getBody());
+        } else if (url.contains("createTask")) {
+            return taskService.createTask((Task) request.getBody());
+        } else if (url.contains("finishTask")) {
+            return taskService.finishTask((Integer) request.getBody());
         }
         return ResultUtil.fail("无效url");
     }

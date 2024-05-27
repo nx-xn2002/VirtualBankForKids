@@ -48,6 +48,7 @@ money Table:
 task Table:
 
 - taskId
+- description
 - isFinished
 - parentId
 - childId

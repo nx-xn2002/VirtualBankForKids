@@ -66,7 +66,7 @@ public class AccountPage extends JPanel {
                     new EditAccountPage();
                 } else if (role.equals(User.CHILD)) {
                     JOptionPane.showMessageDialog(AccountPage.this, "You do not have permission to edit the account. " +
-                            "Please contact your parents.");
+                            "Please connect your parents.");
                 }
             }
         });

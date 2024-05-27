@@ -12,6 +12,7 @@ public class DaoManage {
     private static final RelationDao RELATION_DAO = new RelationDao("src/main/resources/relation_data.csv");
     private static final AccountDao ACCOUNT_DAO = new AccountDao("src/main/resources/account_data.csv");
     private static final MoneyDao MONEY_DAO = new MoneyDao("src/main/resources/money_data.csv");
+    private static final TaskDao TASK_DAO = new TaskDao("src/main/resources/task_data.csv");
 
     public static UserDao getUserDaoInstance() {
         return USER_DAO;
@@ -27,5 +28,9 @@ public class DaoManage {
 
     public static MoneyDao getMoneyDaoInstance() {
         return MONEY_DAO;
+    }
+
+    public static TaskDao getTaskDaoInstance() {
+        return TASK_DAO;
     }
 }
